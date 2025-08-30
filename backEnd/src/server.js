@@ -6,7 +6,7 @@ import cors  from "cors";
 import usersRouter from "./router/user.router.js";
 import postrouter from "./router/post.router.js";
 import commentsrouter from "./router/comment.router.js";
-
+import notificationsrouter from "./router/notification.router.js";
 const app = express();
 
 app.use(cors());
@@ -16,7 +16,8 @@ app.use(clerkMiddleware());
 
 app.use("/api/user", usersRouter);
 app.use("/api/post",postrouter)
-app.use("/api/post",commentsrouter)
+app.use("/api/post",commentsrouter);
+app.use("/api/notification",notificationsrouter)
 
 app.use((err, req, res, next) => {
   console.error("Unhandled Error:", err);
