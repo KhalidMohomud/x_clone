@@ -14,6 +14,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use(clerkMiddleware());
+
 app.use(arcjetMiddleware);
 
 app.use("/api/user", usersRouter);
