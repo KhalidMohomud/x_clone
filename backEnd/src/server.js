@@ -7,12 +7,14 @@ import usersRouter from "./router/user.router.js";
 import postrouter from "./router/post.router.js";
 import commentsrouter from "./router/comment.router.js";
 import notificationsrouter from "./router/notification.router.js";
+import { arcjetMiddleware } from "./middleware/arcject.middleware.js";
 const app = express();
 
 app.use(cors());
 
 app.use(express.json());
 app.use(clerkMiddleware());
+app.use(arcjetMiddleware);
 
 app.use("/api/user", usersRouter);
 app.use("/api/post",postrouter)
