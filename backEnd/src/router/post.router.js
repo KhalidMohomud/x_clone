@@ -1,5 +1,7 @@
 import express from "express"
-import {  getPost, getPosts, getUserPosts } from "../controller/post.controller.js";
+import {  createPost, deletePost, getPost, getPosts, getUserPosts, likePost } from "../controller/post.controller.js";
+import { protectauth } from "../middleware/auth.middleware.js";
+import upload from "../middleware/upload.middleware.js";
 
 const router = express.Router();
 
@@ -11,9 +13,9 @@ router.get("/user/:username", getUserPosts);
 
 //prived router
 
-// router.post("/", protectRoute, upload.single("image"), createPost);
-// router.post("/:postId/like", protectRoute, likePost);
-// router.delete("/:postId", protectRoute, deletePost);
+router.post("/", protectauth, upload.single("image"), createPost);
+router.post("/:postId/like",protectauth , likePost);
+router.delete("/:postId", protectauth, deletePost);
 
 
 

@@ -3,4 +3,35 @@ npm  i express@5.1.0 mongoose@8.16.0 dotenv@16.5.0 cors@2.8.5
 
 npm i @clerk/express@1.7.0 @arcjet/node@1.0.0-beta.8 @arcjet/inspect@1.0.0-beta.8
 
+npm i express-async-handler@1.2.0 cloudinary@2.0.0 multer@2.0.1
+
+express-async-handler
+
+
+Use: To handle async errors in Express routes without repeating try/catch blocks.
+
+🔧 Without this:
+
+app.get("/user", async (req, res, next) => {
+  try {
+    const data = await somethingAsync();
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+✅ With express-async-handler:
+
+import asyncHandler from 'express-async-handler';
+
+app.get("/user", asyncHandler(async (req, res) => {
+  const data = await somethingAsync();
+  res.json(data);
+}));
+
+
+🎯 Cleaner code and centralized error handling.
+
 
