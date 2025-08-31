@@ -31,8 +31,15 @@ app.use((err, req, res, next) => {
 const serverStart = async ()=>{
     try {
         await connectionBD();
+
+        //listen for local development
+
+        if(ENV.NODE_ENV !== "production"){
+           app.listen(ENV.PORT,()=> console.log("http localhost",ENV.PORT) );
+
+        }
        
-        app.listen(ENV.PORT,()=> console.log("http localhost",ENV.PORT) );
+       
         
     } catch (error) {
         console.log("error",error);
