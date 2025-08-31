@@ -22,12 +22,16 @@ app.use("/api/post",postrouter)
 app.use("/api/post",commentsrouter);
 app.use("/api/notification",notificationsrouter)
 
+app.get('/kh',(req,res)=>{
+  res.send("server is running");
+});
 app.use((err, req, res, next) => {
   console.error("Unhandled Error:", err);
   res.status(err.status || 500).json({
     error: err.message || "Something went wrong",
   });
 });
+
 const serverStart = async ()=>{
     try {
         await connectionBD();
