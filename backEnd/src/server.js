@@ -22,7 +22,7 @@ app.use("/api/post",postrouter)
 app.use("/api/post",commentsrouter);
 app.use("/api/notification",notificationsrouter)
 
-app.get('/kh',(req,res)=>{
+app.get('/',(req,res)=>{
   res.send("server is running");
 });
 app.use((err, req, res, next) => {
